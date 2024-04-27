@@ -29,12 +29,13 @@ const Body = () => {
 
     // Optional Chaining
     setListOfRestraunt(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  
 
   const onlineStatus = useOnlineStatus();
 
@@ -67,7 +68,7 @@ const Body = () => {
             onClick={() => {
               // Filter the restraunt cards and update the UI
               // searchText
-              console.log(searchText);
+              
 
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -105,9 +106,9 @@ const Body = () => {
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant?.info.id}
-            to={"/restaurants/" + restaurant?.info.id}
+            to={"/restaurants/" + restaurant?.info?.id}
           >
-            {restaurant?.info.promoted ? (
+            {restaurant?.info?.avgRating === 4.5 ? (
               <RestaurantCardPromoted resData={restaurant?.info} />
             ) : (
               <RestaurantCard resData={restaurant?.info} />

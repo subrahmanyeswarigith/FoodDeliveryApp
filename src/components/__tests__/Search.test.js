@@ -24,19 +24,19 @@ it("Should Search Res List for burger text input ", async () => {
 
   const cardsBeforeSearch = screen.getAllByTestId("resCard");
 
-  expect(cardsBeforeSearch.length).toBe(20);
+  expect(cardsBeforeSearch.length).toBe(9);
 
   const searchBtn = screen.getByRole("button", { name: "Search" });
 
   const searchInput = screen.getByTestId("searchInput");
 
-  fireEvent.change(searchInput, { target: { value: "burger" } });
+  fireEvent.change(searchInput, { target: { value: "pizza" } });
 
   fireEvent.click(searchBtn);
 
   const cardsAfterSearch = screen.getAllByTestId("resCard");
 
-  expect(cardsAfterSearch.length).toBe(4);
+  expect(cardsAfterSearch.length).toBe(2);
 });
 
 it("Should filter Top Rated Restaurant", async () => {
@@ -50,7 +50,7 @@ it("Should filter Top Rated Restaurant", async () => {
 
   const cardsBeforeFilter = screen.getAllByTestId("resCard");
 
-  expect(cardsBeforeFilter.length).toBe(20);
+  expect(cardsBeforeFilter.length).toBe(9);
 
   const topRatedBtn = screen.getByRole("button", {
     name: "Top Rated Restaurants",
@@ -58,5 +58,5 @@ it("Should filter Top Rated Restaurant", async () => {
   fireEvent.click(topRatedBtn);
 
   const cardsAfterFilter = screen.getAllByTestId("resCard");
-  expect(cardsAfterFilter.length).toBe(13);
+  expect(cardsAfterFilter.length).toBe(7);
 });
